@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
 title: Mon troisième article de blog
-author: Apprenti Astro
+author: Devars Esther
 description: "J'ai eu quelques défis, mais demander de l'aide à la communauté m'a vraiment aidé !"
 image:
     url: "https://docs.astro.build/assets/rays.webp"
