@@ -1,11 +1,30 @@
 ---
-import Menu from './Menu.astro';
-import Navigation from './Navigation.astro';
-import ThemeIcon from './ThemeIcon.astro'; 
+import Menu from "./Menu.astro";
+import Navigation from "./Navigation.astro";
+import ThemeIcon from "./ThemeIcon.astro";
 ---
+
 <header>
   <nav>
-    <Menu />
-    <ThemeIcon /> <Navigation />
+    <div class="header-group">
+      <ThemeIcon />
+      <Menu />
+    </div>
+    <Navigation />
   </nav>
 </header>
+
+<style>
+  .header-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  @media screen and (min-width: 636px) {
+    .header-group {
+      width: auto;
+    }
+  }
+</style>
