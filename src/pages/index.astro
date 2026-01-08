@@ -1,11 +1,45 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Greeting from '../components/Greeting.jsx';
-const pageTitle = "Page d'accueil";
----
-<BaseLayout pageTitle={pageTitle}>
-  <h2>Mon sous-titre de blog génial</h2>
+import { getCollection } from "astro:content";
 
-  {/* Cet îlot est interactif grâce à client:load */}
-  <Greeting client:load messages={["Salut", "Bonjour", "Coucou", "Bienvenue", "Habari"]} />
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+// 1. Récupérer tous les articles de la nouvelle collection "blog"
+const allPosts = await getCollection("blog");
+
+// 2. Extraire les tags uniques à partir de data.tags
+const tags = [...new Set(allPosts.map((post) => post.data.tags).flat())];
+
+const pageTitle = "Index des étiquettes";
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <div class="tags">
+    {
+      tags.map((tag) => (
+        <p class="tag">
+          <a href={`/tags/${tag}`}>{tag}</a>
+        </p>
+      ))
+    }
+  </div>
 </BaseLayout>
+
+<style>
+  a {
+    color: #00539f;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    margin: 0.25em;
+    border: dotted 1px #a1a1a1;
+    border-radius: 0.5em;
+    padding: 0.5em 1em;
+    font-size: 1.15em;
+    background-color: #f8fcfd;
+  }
+</style>
