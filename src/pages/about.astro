@@ -12,6 +12,9 @@ const skills = ["HTML", "CSS", "JavaScript", "Astro", "Git"];
 const happy = true;
 const finished = false;
 const goal = 3;
+const skillColor = "crimson";
+const fontWeight = "bold";
+const textCase = "uppercase";
 ---
 
 <html lang="fr">
@@ -20,6 +23,17 @@ const goal = 3;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <title>{pageTitle}</title>
+    <style define:vars={{ skillColor, fontWeight, textCase }}>
+      h1 {
+        color: purple;
+        font-size: 4rem;
+      }
+      .skill {
+        color: var(--skillColor);
+        font-weight: var(--fontWeight);
+        text-transform: var(--textCase);
+      }
+    </style>
   </head>
   <body>
     <a href="/">Accueil</a>
@@ -60,7 +74,7 @@ const goal = 3;
     </ul>
     <p>Voici mes compétences :</p>
     <ul>
-      {skills.map((skill) => <li>{skill}</li>)}
+      {skills.map((skill) => <li class="skill">{skill}</li>)}
     </ul>
     {happy && <p>Je suis heureuse d'apprendre Astro !</p>}
 
