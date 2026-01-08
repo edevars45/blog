@@ -112,3 +112,12 @@ h1 {
   }
 }
 
+/* Styles pour le mode sombre */
+html.dark {
+  background-color: #202023;
+  color: white;
+}
+
+.dark .nav-links a {
+  color: white;
+}
